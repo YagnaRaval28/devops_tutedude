@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "DevOps Fundamentals",
+    "instructor": "Tutedude Mentor",
+    "duration_weeks": 8,
+    "level": "Beginner",
+    "tags": ["linux", "git", "ci-cd"]
+  },
+  {
+    "id": 2,
+    "title": "Docker & Kubernetes",
+    "instructor": "Tutedude Mentor",
+    "duration_weeks": 10,
+    "level": "Intermediate",
+    "tags": ["containers", "orchestration", "helm"]
+  },
+  {
+    "id": 3,
+    "title": "Flask Web Development",
+    "instructor": "Tutedude Mentor",
+    "duration_weeks": 6,
+    "level": "Beginner",
+    "tags": ["python", "flask", "jinja2"]
+  },
+  {
+    "id": 4,
+    "title": "MongoDB for Developers",
+    "instructor": "Tutedude Mentor",
+    "duration_weeks": 5,
+    "level": "Intermediate",
+    "tags": ["nosql", "atlas", "aggregation"]
+  },
+  {
+    "id": 5,
+    "title": "AWS Cloud Practitioner",
+    "instructor": "Tutedude Mentor",
+    "duration_weeks": 7,
+    "level": "Beginner",
+    "tags": ["aws", "ec2", "s3"]
+  }
+]

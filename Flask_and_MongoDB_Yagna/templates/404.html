@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Not Found{% endblock %}
+
+{% block content %}
+<div class="success-box">
+  <h1>404 &mdash; Page not found</h1>
+  <p>The page you requested does not exist.</p>
+  <a class="btn btn-primary" href="{{ url_for('home') }}">Back to home</a>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Records | Flask &amp; MongoDB{% endblock %}
+
+{% block content %}
+<h1>Stored Records</h1>
+<p class="lead">Latest documents read back from the MongoDB Atlas collection.</p>
+
+{% if error %}
+<div class="alert alert-error"><strong>Error:</strong> {{ error }}</div>
+{% elif not rows %}
+<div class="alert alert-info">No records yet. Submit the form to add one.</div>
+{% else %}
+<table class="table">
+  <thead>
+    <tr><th>#</th><th>Name</th><th>Email</th><th>Phone</th><th>Course</th><th>Submitted (UTC)</th></tr>
+  </thead>
+  <tbody>
+    {% for r in rows %}
+    <tr>
+      <td>{{ loop.index }}</td>
+      <td>{{ r.name }}</td>
+      <td>{{ r.email }}</td>
+      <td>{{ r.phone or '-' }}</td>
+      <td>{{ r.course }}</td>
+      <td>{{ r.submitted_at.strftime('%Y-%m-%d %H:%M:%S') if r.submitted_at else '-' }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+{% endblock %}

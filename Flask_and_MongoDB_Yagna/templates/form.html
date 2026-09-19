@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Registration Form | Flask &amp; MongoDB{% endblock %}
+
+{% block content %}
+<h1>Registration Form</h1>
+<p class="lead">Submitted data is inserted into MongoDB Atlas.</p>
+
+{% if error %}
+<div class="alert alert-error">
+  <strong>Error:</strong> {{ error }}
+</div>
+{% endif %}
+
+<form class="form" method="POST" action="{{ url_for('form') }}" novalidate>
+  <label for="name">Full Name <span class="req">*</span></label>
+  <input type="text" id="name" name="name" value="{{ data.get('name', '') }}"
+         placeholder="Enter your full name">
+
+  <label for="email">Email <span class="req">*</span></label>
+  <input type="text" id="email" name="email" value="{{ data.get('email', '') }}"
+         placeholder="you@example.com">
+
+  <label for="phone">Phone (10 digits, optional)</label>
+  <input type="text" id="phone" name="phone" value="{{ data.get('phone', '') }}"
+         placeholder="9876543210">
+
+  <label for="course">Course <span class="req">*</span></label>
+  <select id="course" name="course">
+    <option value="">-- Select a course --</option>
+    {% for c in courses %}
+    <option value="{{ c.title }}"
+      {% if data.get('course') == c.title %}selected{% endif %}>{{ c.title }}</option>
+    {% endfor %}
+  </select>
+
+  <label for="message">Message (optional)</label>
+  <textarea id="message" name="message" rows="4"
+            placeholder="Anything you want to add">{{ data.get('message', '') }}</textarea>
+
+  <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+{% endblock %}

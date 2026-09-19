@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Home | Flask &amp; MongoDB{% endblock %}
+
+{% block content %}
+<h1>Flask &amp; MongoDB Atlas</h1>
+<p class="lead">
+  A Flask app exposing a JSON API backed by a data file, plus a registration
+  form that stores submissions in MongoDB Atlas.
+</p>
+
+<div class="cards">
+  <div class="card">
+    <h2>Task 1 &mdash; JSON API</h2>
+    <p>
+      <code>GET /api</code> reads <code>data/courses.json</code> from the
+      backend and returns it as a JSON list.
+    </p>
+    <a class="btn" href="{{ url_for('api') }}">Open /api</a>
+  </div>
+
+  <div class="card">
+    <h2>Task 2 &mdash; Form &rarr; Atlas</h2>
+    <p>
+      Submitting the form inserts a document into MongoDB Atlas. Success
+      redirects to a confirmation page; errors stay on the same page.
+    </p>
+    <a class="btn" href="{{ url_for('form') }}">Open the form</a>
+  </div>
+</div>
+
+<h2 class="section-title">Data served by /api ({{ courses|length }} records)</h2>
+<table class="table">
+  <thead>
+    <tr><th>ID</th><th>Title</th><th>Level</th><th>Weeks</th><th>Tags</th></tr>
+  </thead>
+  <tbody>
+    {% for c in courses %}
+    <tr>
+      <td>{{ c.id }}</td>
+      <td>{{ c.title }}</td>
+      <td>{{ c.level }}</td>
+      <td>{{ c.duration_weeks }}</td>
+      <td>{{ c.tags | join(', ') }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

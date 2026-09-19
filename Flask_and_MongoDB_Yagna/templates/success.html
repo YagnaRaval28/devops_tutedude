@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Success | Flask &amp; MongoDB{% endblock %}
+
+{% block content %}
+<div class="success-box">
+  <div class="tick">&#10004;</div>
+  <h1>Data submitted successfully</h1>
+  <p>Your details have been stored in MongoDB Atlas.</p>
+  {% if record_id %}
+  <p class="muted">Inserted document ID: <code>{{ record_id }}</code></p>
+  {% endif %}
+  <div class="actions">
+    <a class="btn" href="{{ url_for('form') }}">Submit another</a>
+    <a class="btn btn-primary" href="{{ url_for('records') }}">View all records</a>
+  </div>
+</div>
+{% endblock %}
