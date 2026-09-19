@@ -71,8 +71,21 @@ def main():
 
     except ServerSelectionTimeoutError as exc:
         print(f"[FAIL] Could not reach the cluster.\n       {exc}")
-        print("\n       Most common cause: your IP is not whitelisted.")
-        print("       Fix in Atlas -> Network Access -> Add IP Address.")
+        # An SSL/TLS failure means the connection reached Atlas but was cut
+        # during negotiation, which is a different problem from not being
+        # allowed to connect at all.
+        if "SSL" in str(exc) or "TLS" in str(exc):
+            print("\n       The TLS handshake failed, so the connection reached")
+            print("       Atlas but was interrupted. Usual causes:")
+            print("         - Antivirus / firewall with HTTPS or SSL scanning enabled")
+            print("         - A school, office or public network that inspects traffic")
+            print("         - A VPN or proxy interfering with port 27017")
+            print("\n       Try a different network (a mobile hotspot is the quickest")
+            print("       test) or temporarily disable SSL scanning in your antivirus.")
+        else:
+            print("\n       Most common cause: your IP is not whitelisted.")
+            print("       Fix in Atlas -> Network Access -> Add IP Address.")
+            print("       Also check the cluster is not paused in Atlas -> Database.")
     except OperationFailure as exc:
         print(f"[FAIL] Authentication or permission error.\n       {exc}")
         print("\n       Check the username/password in MONGO_URI.")
