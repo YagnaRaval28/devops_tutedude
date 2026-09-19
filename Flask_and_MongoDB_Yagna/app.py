@@ -17,10 +17,12 @@ from flask import Flask, jsonify, redirect, render_template, request, url_for
 from pymongo import MongoClient
 from pymongo.errors import PyMongoError, ServerSelectionTimeoutError
 
-load_dotenv()
-
 BASE_DIR = Path(__file__).resolve().parent
 DATA_FILE = BASE_DIR / "data" / "courses.json"
+
+# Load .env from next to this file, not from the current working directory,
+# so the app works no matter which folder it is started from.
+load_dotenv(BASE_DIR / ".env")
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "dev-secret-key")

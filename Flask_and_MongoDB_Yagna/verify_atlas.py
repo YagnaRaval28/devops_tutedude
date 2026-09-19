@@ -10,12 +10,15 @@ prints the current document count. Good screenshot material for the report.
 import os
 import sys
 from datetime import datetime, timezone
+from pathlib import Path
 
 from dotenv import load_dotenv
 from pymongo import MongoClient
 from pymongo.errors import ConfigurationError, OperationFailure, ServerSelectionTimeoutError
 
-load_dotenv()
+# Load .env from next to this file, not from the current working directory,
+# so the script works no matter which folder it is run from.
+load_dotenv(Path(__file__).resolve().parent / ".env")
 
 URI = os.getenv("MONGO_URI", "")
 DB = os.getenv("MONGO_DB", "tutedude_assignment")
