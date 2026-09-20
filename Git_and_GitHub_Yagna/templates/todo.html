@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}To-Do | Git &amp; GitHub{% endblock %}
+
+{% block content %}
+<h1>To-Do Item</h1>
+<p class="lead">Add an item to the To-Do list.</p>
+
+{% if error %}
+<div class="alert alert-error"><strong>Error:</strong> {{ error }}</div>
+{% endif %}
+{% if success %}
+<div class="alert alert-ok"><strong>Success:</strong> {{ success }}</div>
+{% endif %}
+
+<form class="form" method="POST" action="{{ url_for('submit_todo_item') }}" novalidate>
+  <label for="itemName">Item Name <span class="req">*</span></label>
+  <input type="text" id="itemName" name="itemName"
+         value="{{ data.get('itemName', '') }}"
+         placeholder="e.g. Finish the Git assignment">
+
+  <label for="itemDescription">Item Description <span class="req">*</span></label>
+  <textarea id="itemDescription" name="itemDescription" rows="4"
+            placeholder="Describe the task">{{ data.get('itemDescription', '') }}</textarea>
+
+  <button class="btn btn-primary" type="submit">Add Item</button>
+</form>
+{% endblock %}
