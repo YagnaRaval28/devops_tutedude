@@ -11,7 +11,7 @@ import os
 from pathlib import Path
 
 from dotenv import load_dotenv
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request
 
 BASE_DIR = Path(__file__).resolve().parent
 DATA_FILE = BASE_DIR / "data" / "courses.json"
@@ -42,6 +42,12 @@ def api():
         return jsonify({"error": f"Data file not found: {DATA_FILE.name}"}), 500
     except json.JSONDecodeError as exc:
         return jsonify({"error": f"Data file is not valid JSON: {exc}"}), 500
+
+
+@app.route("/todo")
+def todo():
+    """To-Do page with the Item Name and Item Description fields."""
+    return render_template("todo.html", data={}, error=None, success=None)
 
 
 if __name__ == "__main__":
