@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "DevOps Fundamentals",
+    "instructor": "Tutedude Mentor",
+    "duration_weeks": 8,
+    "level": "Beginner"
+  },
+  {
+    "id": 2,
+    "title": "Docker & Kubernetes",
+    "instructor": "Tutedude Mentor",
+    "duration_weeks": 10,
+    "level": "Intermediate"
+  },
+  {
+    "id": 3,
+    "title": "Flask Web Development",
+    "instructor": "Tutedude Mentor",
+    "duration_weeks": 6,
+    "level": "Beginner"
+  }
+]
