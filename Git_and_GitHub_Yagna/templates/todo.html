@@ -22,6 +22,11 @@
   <textarea id="itemDescription" name="itemDescription" rows="4"
             placeholder="Describe the task">{{ data.get('itemDescription', '') }}</textarea>
 
+  <label for="itemId">Item ID <span class="req">*</span></label>
+  <input type="text" id="itemId" name="itemId"
+         value="{{ data.get('itemId', '') }}"
+         placeholder="e.g. 1001">
+
   <button class="btn btn-primary" type="submit">Add Item</button>
 </form>
 {% endblock %}
