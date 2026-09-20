@@ -1,23 +1,37 @@
 [
   {
     "id": 1,
-    "title": "DevOps Fundamentals",
+    "title": "DevOps Fundamentals (Updated)",
     "instructor": "Tutedude Mentor",
-    "duration_weeks": 8,
+    "duration_weeks": 12,
     "level": "Beginner"
   },
   {
     "id": 2,
-    "title": "Docker & Kubernetes",
+    "title": "Docker & Kubernetes (Updated)",
     "instructor": "Tutedude Mentor",
-    "duration_weeks": 10,
+    "duration_weeks": 14,
     "level": "Intermediate"
   },
   {
     "id": 3,
-    "title": "Flask Web Development",
+    "title": "Flask Web Development (Updated)",
     "instructor": "Tutedude Mentor",
-    "duration_weeks": 6,
+    "duration_weeks": 9,
     "level": "Beginner"
+  },
+  {
+    "id": 4,
+    "title": "Git & GitHub Mastery",
+    "instructor": "Tutedude Mentor",
+    "duration_weeks": 5,
+    "level": "Beginner"
+  },
+  {
+    "id": 5,
+    "title": "CI/CD with Jenkins",
+    "instructor": "Tutedude Mentor",
+    "duration_weeks": 7,
+    "level": "Advanced"
   }
 ]
