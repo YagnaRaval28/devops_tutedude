@@ -1,0 +1,65 @@
+# Docker Compose configuration for the Docker assignment.
+#
+# Runs the Express frontend and the Flask backend as two services on a
+# shared user-defined bridge network. On that network Docker provides
+# internal DNS, so the frontend reaches the backend at http://backend:5000
+# using the service name - no IP addresses and no host networking.
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: yagnaraval28/docker-assignment-backend:latest
+    container_name: flask-backend
+    environment:
+      - PORT=5000
+      - FLASK_DEBUG=0
+    ports:
+      # Published only so the backend can be tested directly with curl.
+      # The frontend does not need this: it talks over the internal network.
+      # Host port 5001 avoids clashing with anything already on 5000; the
+      # container still listens on 5000 internally.
+      - "5001:5000"
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:5000/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: yagnaraval28/docker-assignment-frontend:latest
+    container_name: express-frontend
+    environment:
+      - PORT=3000
+      # 'backend' is the service name above, resolved by Docker's DNS.
+      # localhost would point at the frontend container itself.
+      - BACKEND_URL=http://backend:5000
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+    depends_on:
+      backend:
+        # Wait for the backend's healthcheck to pass, not merely for its
+        # container to start, so the frontend never boots against a
+        # backend that is not yet accepting requests.
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://127.0.0.1:3000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submissions | Docker Assignment</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <a class="brand" href="/">Docker Assignment</a>
+    <div class="links">
+      <a href="/">Form</a>
+      <a href="/submissions">Submissions</a>
+      <a href="/health">Health</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h1>Submissions</h1>
+    <p class="lead">Read back from the Flask backend over the Docker network.</p>
+
+    <% if (error) { %>
+    <div class="alert alert-error"><strong>Error:</strong> <%= error %></div>
+    <% } else if (!rows.length) { %>
+    <div class="alert alert-info">No submissions yet. Use the form to add one.</div>
+    <% } else { %>
+    <table class="table">
+      <thead>
+        <tr><th>#</th><th>Name</th><th>Email</th><th>Phone</th><th>Course</th></tr>
+      </thead>
+      <tbody>
+        <% rows.forEach(function (r) { %>
+        <tr>
+          <td><%= r.id %></td>
+          <td><%= r.name %></td>
+          <td><%= r.email %></td>
+          <td><%= r.phone || '-' %></td>
+          <td><%= r.course %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+    <% } %>
+  </main>
+
+  <footer class="footer">DevOps Assignment &mdash; Docker &amp; Docker Compose</footer>
+</body>
+</html>

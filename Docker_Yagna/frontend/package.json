@@ -1,0 +1,19 @@
+{
+  "name": "docker-assignment-frontend",
+  "version": "1.0.0",
+  "description": "Express frontend that submits a registration form to the Flask backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2"
+  },
+  "author": "Yagna Raval",
+  "license": "ISC"
+}
