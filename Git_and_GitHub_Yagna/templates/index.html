@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Home | Git &amp; GitHub{% endblock %}
+
+{% block content %}
+<h1>Git &amp; GitHub Assignment</h1>
+<p class="lead">
+  A Flask project used to practise the full Git workflow: SSH setup,
+  branching, merging, conflict resolution, reset and rebase.
+</p>
+
+<h2 class="section-title">Courses served by /api ({{ courses|length }})</h2>
+<table class="table">
+  <thead><tr><th>ID</th><th>Title</th><th>Level</th><th>Weeks</th></tr></thead>
+  <tbody>
+    {% for c in courses %}
+    <tr>
+      <td>{{ c.id }}</td><td>{{ c.title }}</td>
+      <td>{{ c.level }}</td><td>{{ c.duration_weeks }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Git &amp; GitHub{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <nav class="nav">
+    <a class="brand" href="{{ url_for('home') }}">Git &amp; GitHub</a>
+    <div class="links">
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('api') }}">/api</a>
+    </div>
+  </nav>
+  <main class="container">{% block content %}{% endblock %}</main>
+  <footer class="footer">DevOps Assignment &mdash; Git &amp; GitHub</footer>
+</body>
+</html>
