@@ -83,18 +83,18 @@ network on port 5000.
 
 ```bash
 docker login
-docker push yagnaraval28/docker-assignment-frontend:latest
-docker push yagnaraval28/docker-assignment-backend:latest
+docker push yagnaraval/docker-assignment-frontend:latest
+docker push yagnaraval/docker-assignment-backend:latest
 ```
 
-- <https://hub.docker.com/r/yagnaraval28/docker-assignment-frontend>
-- <https://hub.docker.com/r/yagnaraval28/docker-assignment-backend>
+- <https://hub.docker.com/r/yagnaraval/docker-assignment-frontend>
+- <https://hub.docker.com/r/yagnaraval/docker-assignment-backend>
 
 To run from Docker Hub without building:
 
 ```bash
-docker pull yagnaraval28/docker-assignment-frontend:latest
-docker pull yagnaraval28/docker-assignment-backend:latest
+docker pull yagnaraval/docker-assignment-frontend:latest
+docker pull yagnaraval/docker-assignment-backend:latest
 docker compose up
 ```
 
@@ -133,5 +133,5 @@ smaller.
 
 | Image | Base | Size |
 |---|---|---|
-| `yagnaraval28/docker-assignment-frontend` | `node:20-alpine` | ~205 MB |
-| `yagnaraval28/docker-assignment-backend` | `python:3.12-slim` | ~187 MB |
+| `yagnaraval/docker-assignment-frontend` | `node:20-alpine` | ~205 MB |
+| `yagnaraval/docker-assignment-backend` | `python:3.12-slim` | ~187 MB |

@@ -10,7 +10,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    image: yagnaraval28/docker-assignment-backend:latest
+    image: yagnaraval/docker-assignment-backend:latest
     container_name: flask-backend
     environment:
       - PORT=5000
@@ -35,7 +35,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    image: yagnaraval28/docker-assignment-frontend:latest
+    image: yagnaraval/docker-assignment-frontend:latest
     container_name: express-frontend
     environment:
       - PORT=3000
